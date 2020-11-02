@@ -1,7 +1,7 @@
 # import CreateBookInput, Book, UpdateBookInput from '../models/book.graphql'
 
 type Query {
-  getAllBooks: [Book],
+  getAllBooks(first: Int, skip: Int): [Book],
   getBook(id: ID!): Book,
 }
 
