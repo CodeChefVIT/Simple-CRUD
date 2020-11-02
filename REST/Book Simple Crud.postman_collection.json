@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "71f26bf4-fd84-4e70-b1d0-11f9cf0ee236",
+		"name": "Book Simple Crud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"book2\",\r\n    \"author\":\"auth\",\r\n    \"image_url\":\"www.codechefvit.com\",\r\n    \"description\":\"good book\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/book/single",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"book",
+						"single"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add book",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"samplebook\",\r\n    \"author\":\"author\",\r\n    \"image_url\":\"www.codechefvit.com\",\r\n    \"description\":\"good book\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/book/single",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"book",
+								"single"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization,auth-token"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-46vP7K7XDT3eHYIfD83+BzYLkm4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Nov 2020 06:21:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Book Created\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/book/multiple",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"book",
+						"multiple"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/book/multiple",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"book",
+								"multiple"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization,auth-token"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "288"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"120-1avG92R01HoOB4BY9yzLRcmdoAQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Nov 2020 06:23:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"books\": [\n        {\n            \"_id\": \"5f9fa58799e7a164c0880421\",\n            \"title\": \"samplebook\",\n            \"author\": \"author\",\n            \"image_url\": \"www.codechefvit.com\",\n            \"description\": \"good book\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5f9fa5ca99e7a164c0880422\",\n            \"title\": \"book2\",\n            \"author\": \"auth\",\n            \"image_url\": \"www.codechefvit.com\",\n            \"description\": \"good book\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get book by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/book/single/5f9fa58799e7a164c0880421",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"book",
+						"single",
+						"5f9fa58799e7a164c0880421"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get book by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/book/single/5f9fa58799e7a164c0880421",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"book",
+								"single",
+								"5f9fa58799e7a164c0880421"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization,auth-token"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "150"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"96-3VLy6vFAyA5K+b3o2UqyWQsFsOY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Nov 2020 06:24:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"book\": {\n        \"_id\": \"5f9fa58799e7a164c0880421\",\n        \"title\": \"samplebook\",\n        \"author\": \"author\",\n        \"image_url\": \"www.codechefvit.com\",\n        \"description\": \"good book\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update book",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\":\"5f9fa58799e7a164c0880421\",\r\n    \"title\":\"updated title\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/book/single",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"book",
+						"single"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update book",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\":\"5f9fa58799e7a164c0880421\",\r\n    \"title\":\"updated title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/book/single",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"book",
+								"single"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization,auth-token"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"16-azn2b/RLbwuKp3sJz3uM9NwGHh0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Nov 2020 06:26:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Updated!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\":\"5f9fa5ca99e7a164c0880422\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/book/single",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"book",
+						"single"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete book",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\":\"5f9fa5ca99e7a164c0880422\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/book/single",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"book",
+								"single"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization,auth-token"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"16-GWsV8lj5M7Ia4ionwXCaGf2aQJk\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Nov 2020 06:29:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Deleted!\"\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
