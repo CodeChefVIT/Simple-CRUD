@@ -1,7 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga');
 var { resolvers } = require('../graphql/resolvers/index');
 const { context } = require('../graphql/context/index');
-const { middlewares } = require('../graphql/middlewares/index')
 resolvers = resolvers
 
 const OPTION = {

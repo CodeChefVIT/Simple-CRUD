@@ -1,10 +1,16 @@
-const bcrypt = require('bcrypt')
-const JWT = require('jsonwebtoken')
-
 const Query = {
-	getAllBooks: async (_parent, args, { book }) => {
+	getAllBooks: async (_parent, { first, skip }, { book }) => {
     try {
-      const books = await book.get({})
+      let books = await book.get({})
+      if (first && !skip) {
+        books = books.splice(0, first + 0);
+      }
+      if (skip && !first) {
+        books = books.splice(skip, books.length - 1);
+      }
+      if (skip && first) {
+        books = books.splice(skip, skip + first - 1 );
+      }
       console.log(books)
       return books
     } catch (e) {

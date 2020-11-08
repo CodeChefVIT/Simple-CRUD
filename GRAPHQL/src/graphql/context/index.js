@@ -1,5 +1,4 @@
 const Book = require('../../models/book');
-const JWT = require('jsonwebtoken')
 require('dotenv').config()
 
 const book = new Book();
