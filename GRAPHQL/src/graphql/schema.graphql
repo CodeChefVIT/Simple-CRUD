@@ -10,3 +10,6 @@ type Mutation {
   updateBook(bookDoc: UpdateBookInput): Book
   deleteBook(id: ID!): Book
 }
+
+### QUERY - GET
+#### MUTATION - CUD

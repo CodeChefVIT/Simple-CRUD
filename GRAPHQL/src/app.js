@@ -31,20 +31,20 @@ app.use(PATH.API, ApiRoutes);
 const connection = mongoose.connection;
 
 connection.once('open', () => {
-  console.log(`Successfully connected to database at ${URL}`);
+  console.log(`Successfully connected to database`);
 });
 
 connection.on('disconnected', () => {
-  console.log(`disconnected event to database at ${URL}`);
+  console.log(`disconnected event to database`);
 });
 
 connection.on('reconnectFailed', () => {
-  console.log(`reconnectFailed event to database at ${URL}`);
+  console.log(`reconnectFailed event to database`);
 });
 
 connection.on('error', () => {
   console.log(
-    `database connection error while connecting at ${URL}`
+    `database connection error while connecting`
   );
 });
 
