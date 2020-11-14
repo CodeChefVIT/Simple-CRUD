@@ -1,0 +1,15 @@
+# import CreateBookInput, Book, UpdateBookInput from '../models/book.graphql'
+
+type Query {
+  getAllBooks(first: Int, skip: Int): [Book],
+  getBook(id: ID!): Book,
+}
+
+type Mutation {
+  createBook(bookDoc: CreateBookInput): Book
+  updateBook(bookDoc: UpdateBookInput): Book
+  deleteBook(id: ID!): Book
+}
+
+### QUERY - GET
+#### MUTATION - CUD

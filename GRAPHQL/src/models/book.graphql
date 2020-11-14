@@ -1,0 +1,26 @@
+input CreateBookInput {
+	title: String
+	author: String
+	description: String
+  image: String
+  isbn_number: Int
+}
+
+type Book {
+  _id: ID
+	title: String
+	author: String
+	description: String
+  image: String
+  isbn_number: Int
+}
+
+input UpdateBookInput {
+  _id: ID
+	title: String
+	author: String
+	description: String
+  image: String
+  isbn_number: Int
+}
+
