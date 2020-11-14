@@ -1,0 +1,73 @@
+service:
+  name: simple-crud
+
+plugins:
+  - serverless-bundle
+  - serverless-pseudo-parameters
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  stage: ${opt:stage, 'dev'}
+  environment:
+    CRUD_TABLE_NAME: crudTable
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:DeleteItem
+        - dynamodb:UpdateItem
+      Resource:
+        - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/crudTable
+
+resources:
+  Resources:
+    AuctionsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: crudTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+  
+functions:
+  createBook:
+    handler: src/handlers/createBook.handler
+    events:
+      - http:
+          method: POST
+          path: /book
+  getBooks:
+    handler: src/handlers/getBooks.handler
+    events:
+      - http:
+          method: GET
+          path: /books
+  getBook:
+    handler: src/handlers/getBook.handler
+    events:
+      - http:
+          method: GET
+          path: /book/{id}
+  deleteBook:
+    handler: src/handlers/deleteBook.handler
+    events:
+      - http:
+          method: DELETE
+          path: /book/{id}
+  updateBook:
+    handler: src/handlers/updateBook.handler
+    events:
+      - http:
+          method: PATCH
+          path: /book/{id}
+custom:
+  bundle:
+    linting: false 
