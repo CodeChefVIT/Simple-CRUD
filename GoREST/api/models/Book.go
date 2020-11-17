@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	uuid "github.com/google/uuid"
 	"github.com/jinzhu/gorm"
 )
@@ -35,4 +37,46 @@ func (b *Book) FindAllBooks(db *gorm.DB) (*[]Book, error) {
 		return &[]Book{}, err
 	}
 	return &books, err
+}
+
+func (b *Book) FindBookByID(db *gorm.DB, id uuid.UUID) (*Book, error) {
+	var err error
+	err = db.Debug().Model(Book{}).Where("uuid = ?", id).Take(&b).Error
+	if err != nil {
+		return &Book{}, err
+	}
+	if gorm.IsRecordNotFoundError(err) {
+		return &Book{}, errors.New("Book Not Found")
+	}
+	return b, err
+}
+
+func (b *Book) UpdateBook(db *gorm.DB, id uuid.UUID) (*Book, error) {
+	var err error
+	db = db.Debug().Model(&Book{}).Where("uuid = ?", id).Take(&Book{}).UpdateColumns(
+		map[string]interface{}{
+			"title":       b.Title,
+			"author":      b.Author,
+			"image_url":   b.ImageURL,
+			"description": b.Description,
+		},
+	)
+	if db.Error != nil {
+		return &Book{}, db.Error
+	}
+	err = db.Debug().Model(&Book{}).Where("uuid = ?", id).Take(&b).Error
+	if err != nil {
+		return &Book{}, err
+	}
+	return b, nil
+}
+
+func (b *Book) DeleteABook(db *gorm.DB, id uuid.UUID) (int64, error) {
+
+	db = db.Debug().Model(&Book{}).Where("uuid = ?", id).Take(&Book{}).Delete(&Book{})
+
+	if db.Error != nil {
+		return 0, db.Error
+	}
+	return db.RowsAffected, nil
 }
