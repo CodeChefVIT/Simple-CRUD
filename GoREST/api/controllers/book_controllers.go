@@ -16,11 +16,11 @@ func (server *Server) CreateBook(c *gin.Context) {
 		c.Error(err)
 	}
 	book := models.Book{}
+	book.BeforeCreate()
 	err = json.Unmarshal(body, &book)
 	if err != nil {
 		c.Error(err)
 	}
-	book.BeforeCreate()
 	userCreated, err := book.SaveBook(server.DB)
 	if err != nil {
 		c.Error(err)
