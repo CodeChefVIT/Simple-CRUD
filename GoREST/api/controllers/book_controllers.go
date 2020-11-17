@@ -20,6 +20,7 @@ func (server *Server) CreateBook(c *gin.Context) {
 	if err != nil {
 		c.Error(err)
 	}
+	book.BeforeCreate()
 	userCreated, err := book.SaveBook(server.DB)
 	if err != nil {
 		c.Error(err)
