@@ -43,7 +43,7 @@ sls deploy -f yourFunction -v
 
 
 ## Contributors
-- <a href="https://github.com/N0v0cain3<Contributor>">Shivam Mehta </a>
+- <a href="https://github.com/N0v0cain3">Shivam Mehta </a>
 
 ## License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
