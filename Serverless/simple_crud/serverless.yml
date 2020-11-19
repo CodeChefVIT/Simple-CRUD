@@ -22,6 +22,7 @@ provider:
         - dynamodb:UpdateItem
       Resource:
         - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/crudTable
+  region: ap-south-1
 
 resources:
   Resources:
