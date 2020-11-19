@@ -1,0 +1,24 @@
+{
+  "name": "gr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon -e js,graphql,env -w .environment --watch src/ src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-http-context": "^1.2.4",
+    "graphql-shield": "^7.4.0",
+    "graphql-yoga": "^1.18.3",
+    "mongoose": "^5.10.11",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {}
+}
