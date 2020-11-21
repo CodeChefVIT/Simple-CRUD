@@ -48,8 +48,7 @@ func (server *Server) GetBooks(c *gin.Context) {
 //GetBook ...
 func (server *Server) GetBook(c *gin.Context) {
 	id := c.Param("uuid")
-	b := []byte(id)
-	userid, err := uuid.FromBytes(b)
+	userid, err := uuid.Parse(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not parse UUID"})
 		return
