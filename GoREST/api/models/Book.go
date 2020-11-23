@@ -11,10 +11,10 @@ import (
 //Book ...
 type Book struct {
 	UUID        uuid.UUID `gorm:"primary_key" json:"uuid"`
-	Title       string    `gorm:"size:255;not null;unique" json:"title"`
-	Author      string    `gorm:"size:255;not null;unique" json:"author"`
-	ImageURL    string    `gorm:"size:255;not null;unique" json:"image_url"`
-	Description string    `gorm:"size:255;not null;unique" json:"description"`
+	Title       string    `gorm:"size:255;not null;" json:"title"`
+	Author      string    `gorm:"size:255;not null;" json:"author"`
+	ImageURL    string    `gorm:"size:255;not null;" json:"image_url"`
+	Description string    `gorm:"size:255;not null;" json:"description"`
 }
 
 //BeforeCreate ...
