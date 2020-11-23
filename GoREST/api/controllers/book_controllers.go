@@ -14,6 +14,7 @@ import (
 
 //CreateBook ...
 func (server *Server) CreateBook(c *gin.Context) {
+	c.Header("Content-Type", "application/json")
 	body, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Error reading records"})
@@ -36,18 +37,20 @@ func (server *Server) CreateBook(c *gin.Context) {
 
 //GetBooks ...
 func (server *Server) GetBooks(c *gin.Context) {
+	c.Header("Content-Type", "application/json")
 	book := models.Book{}
 	books, err := book.FindAllBooks(server.DB)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found"})
 		return
 	}
-	c.JSON(http.StatusOK, books)
+	c.JSON(http.StatusOK, gin.H{"books": books})
 }
 
 //GetBook ...
 func (server *Server) GetBook(c *gin.Context) {
 	id := c.Param("uuid")
+	c.Header("Content-Type", "application/json")
 	bookid, err := uuid.Parse(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not parse UUID"})
@@ -61,6 +64,7 @@ func (server *Server) GetBook(c *gin.Context) {
 //UpdateBook ...
 func (server *Server) UpdateBook(c *gin.Context) {
 	id := c.Param("uuid")
+	c.Header("Content-Type", "application/json")
 	bookid, err := uuid.Parse(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not parse UUID"})
@@ -88,6 +92,7 @@ func (server *Server) UpdateBook(c *gin.Context) {
 //DeleteBook ...
 func (server *Server) DeleteBook(c *gin.Context) {
 	id := c.Param("uuid")
+	c.Header("Content-Type", "application/json")
 	bookid, err := uuid.Parse(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not parse UUID"})

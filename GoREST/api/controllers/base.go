@@ -10,11 +10,13 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+//Server ...
 type Server struct {
 	DB     *gorm.DB
 	Router *gin.Engine
 }
 
+//Initialize ...
 func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, DbName string) {
 
 	var err error
@@ -35,6 +37,7 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 	server.initializeRoutes()
 }
 
+//Run ...
 func (server *Server) Run(addr string) {
 	fmt.Println("Listening to port 8080")
 	log.Fatal(http.ListenAndServe(addr, server.Router))
