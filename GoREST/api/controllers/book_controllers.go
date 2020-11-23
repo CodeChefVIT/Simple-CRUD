@@ -48,12 +48,56 @@ func (server *Server) GetBooks(c *gin.Context) {
 //GetBook ...
 func (server *Server) GetBook(c *gin.Context) {
 	id := c.Param("uuid")
-	userid, err := uuid.Parse(id)
+	bookid, err := uuid.Parse(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not parse UUID"})
 		return
 	}
 	book := models.Book{}
-	bookGotten, err := book.FindBookByID(server.DB, userid)
+	bookGotten, err := book.FindBookByID(server.DB, bookid)
 	c.JSON(http.StatusOK, bookGotten)
+}
+
+//UpdateBook ...
+func (server *Server) UpdateBook(c *gin.Context) {
+	id := c.Param("uuid")
+	bookid, err := uuid.Parse(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not parse UUID"})
+		return
+	}
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error reading records"})
+		return
+	}
+	book := models.Book{}
+	err = json.Unmarshal(body, &book)
+	if err != nil {
+		c.JSON(http.StatusUnprocessableEntity, gin.H{"error": "Error in JSON"})
+		return
+	}
+	updatedBook, err := book.UpdateBook(server.DB, bookid)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error in updating Data"})
+		return
+	}
+	c.JSON(http.StatusOK, updatedBook)
+}
+
+//DeleteBook ...
+func (server *Server) DeleteBook(c *gin.Context) {
+	id := c.Param("uuid")
+	bookid, err := uuid.Parse(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not parse UUID"})
+		return
+	}
+	book := models.Book{}
+	_, err = book.DeleteABook(server.DB, bookid)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error in deleting a record"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "record deleted"})
 }
