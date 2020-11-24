@@ -21,6 +21,7 @@ func (server *Server) CreateBook(c *gin.Context) {
 	}
 	book := models.Book{}
 	book.BeforeCreate()
+	//assigns a uuid
 	err = json.Unmarshal(body, &book)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Error in JSON"})
