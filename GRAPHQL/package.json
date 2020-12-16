@@ -17,7 +17,7 @@
     "express-http-context": "^1.2.4",
     "graphql-shield": "^7.4.0",
     "graphql-yoga": "^1.18.3",
-    "mongoose": "^5.10.11",
+    "mongoose": "^5.11.7",
     "nodemon": "^2.0.6"
   },
   "devDependencies": {}
